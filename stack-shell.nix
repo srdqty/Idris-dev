@@ -1,5 +1,4 @@
-{ ghc }:
-with (import <nixpkgs> {});
+with (import ./nixpkgs/c49b7f64d15dfd6f68e7bd1dd1f1f862f8840ff8 {});
 
 let
   libs = [
@@ -16,7 +15,7 @@ let
   ]);
 
 in haskell.lib.buildStackProject {
-  inherit ghc;
+  ghc = haskell.compiler.ghc865;
   nativeBuildInputs = native_libs;
   buildInputs = libs;
   name = "idrisBuildEnv";
